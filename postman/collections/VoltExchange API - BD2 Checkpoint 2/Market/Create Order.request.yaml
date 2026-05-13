@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{base_url}}/api/market/order"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"compradorid":2,"quantidadekwh":10,"precomaximo":0.20}'
+order: 1000

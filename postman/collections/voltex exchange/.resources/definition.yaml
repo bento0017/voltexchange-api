@@ -1,0 +1,4 @@
+$kind: collection
+name: voltex exchange
+variables:
+  base_url: ""

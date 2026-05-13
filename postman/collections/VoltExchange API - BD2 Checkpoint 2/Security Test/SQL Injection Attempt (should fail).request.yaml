@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{base_url}}/api/auth/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: "{\"email\":\"' OR 1=1 --\",\"password\":\"123\"}"
+order: 1000

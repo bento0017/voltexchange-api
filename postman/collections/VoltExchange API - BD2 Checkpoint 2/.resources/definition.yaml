@@ -1,0 +1,4 @@
+$kind: collection
+description: Collection para testar API VoltExchange - Base de Dados II
+variables:
+  base_url: http://localhost:3000

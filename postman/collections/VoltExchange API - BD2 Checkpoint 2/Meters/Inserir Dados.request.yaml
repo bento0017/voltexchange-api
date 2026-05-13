@@ -1,0 +1,12 @@
+$kind: http-request
+name: Inserir Dados
+url: "{{base_url}}/api/meters/readings"
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: text
+  content: '{"contadorid":1,"datahora":"2026-05-13
+    12:00:00","kwh_leitura":5.5,"dadosaudit":{"temperatura":75}}'
+order: 1000

@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{base_url}}/api/market/buy"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"ofertaid":2,"compradorid":2}'
+order: 3000

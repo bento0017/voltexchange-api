@@ -1,0 +1,11 @@
+# Use this workspace to collaborate
+workspace:
+  id: 8e0f3778-1315-449d-aa11-1165adf9f08f
+
+localResources:
+  collections:
+    - ../VoltExchange-API.postman_collection.json
+
+cloudResources:
+  collections:
+    ../postman/collections/VoltExchange API - BD2 Checkpoint 2: 9490c9a1-aaf8-40ef-96ad-dc9a904468ee

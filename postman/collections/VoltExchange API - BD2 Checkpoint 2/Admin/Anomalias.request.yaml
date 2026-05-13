@@ -1,0 +1,5 @@
+$kind: http-request
+name: Anomalias
+url: "{{base_url}}/api/admin/anomalies"
+method: GET
+order: 1000

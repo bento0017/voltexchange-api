@@ -13,7 +13,7 @@ router.get('/anomalies', async (req, res) => {
             FROM contadores c
             JOIN leituras l ON c.contadorid = l.contadorid
             WHERE (l.dadosaudit->>'temperatura')::numeric > 80
-               OR l.dadosaudit ? 'erro_codigo'
+               OR (l.dadosaudit->>'erro_codigo') IS NOT NULL
         `);
         res.json({ success: true, anomalies: result.rows });
     } catch (err) {
