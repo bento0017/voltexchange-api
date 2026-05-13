@@ -89,6 +89,27 @@
       ]
     },
     {
+      "name": "Users",
+      "item": [
+        {
+          "name": "List All Users (with balances)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{base_url}}/api/users", "host": ["{{base_url}}"], "path": ["api", "users"]}
+          }
+        },
+        {
+          "name": "Get User Balance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{base_url}}/api/users/2", "host": ["{{base_url}}"], "path": ["api", "users", "2"]}
+          }
+        }
+      ]
+    },
+    {
       "name": "Security Test",
       "item": [
         {

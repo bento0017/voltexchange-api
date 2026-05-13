@@ -1,11 +1,14 @@
-# Use this workspace to collaborate
 workspace:
   id: 8e0f3778-1315-449d-aa11-1165adf9f08f
-
 localResources:
   collections:
     - ../VoltExchange-API.postman_collection.json
-
+    - ../postman/collections/voltex exchange
+  environments:
+    - ../postman/environments/VoltExchange Production.environment.yaml
 cloudResources:
   collections:
     ../postman/collections/VoltExchange API - BD2 Checkpoint 2: 9490c9a1-aaf8-40ef-96ad-dc9a904468ee
+    ../postman/collections/voltex exchange: 54796803-b4de7218-1de8-4b67-8b3a-61145669b71c
+  environments:
+    ../postman/environments/VoltExchange Production.environment.yaml: 54796803-ca67a237-fcc0-4d9c-af69-b283a75642b3

@@ -1,0 +1,103 @@
+GUIA DE DEFESA - Checkpoint 2 VoltExchange
+===========================================
+
+O professor vai pedir para explicares codigo. Aqui estao as frases
+para dizeres com as tuas palavras.
+
+
+1. FOR UPDATE (sp_ExecutarCompraDireta)
+----------------------------------------
+Codigo:
+    SELECT * INTO v_oferta
+    FROM ofertasvenda
+    WHERE ofertaid = p_ofertaid
+    FOR UPDATE;
+
+O que dizes:
+"O FOR UPDATE tranca a linha da oferta na base de dados. Quando a API
+recebe dois pedidos ao mesmo tempo, o primeiro que chega fica com a
+oferta bloqueada. O segundo fica a espera. Assim ninguem compra a
+mesma oferta duas vezes."
+
+
+2. NEW.dadosaudit->>'temperatura' (Trigger 1)
+----------------------------------------------
+Codigo:
+    IF (NEW.dadosaudit->>'temperatura')::NUMERIC > 80 THEN
+
+O que dizes:
+"O NEW e o registo que acabei de inserir. O dadosaudit e JSONB.
+O ->> tira o valor da chave 'temperatura' como texto. Depois uso
+::NUMERIC para converter texto em numero, para poder comparar com 80.
+Se a temperatura for maior que 80, o contador passa para MANUTENCAO."
+
+
+3. ON CONFLICT DO UPDATE (seed de dados)
+----------------------------------------
+Codigo:
+    INSERT INTO utilizadores (nome, email, passwordhash, saldo)
+    VALUES ('Teste', 'teste@teste.pt', 'hash', 100)
+    ON CONFLICT (email) DO UPDATE SET saldo = 100;
+
+O que dizes:
+"Se ja existir um utilizador com esse email, em vez de dar erro,
+faco UPDATE do saldo. Isto e util para nao criar duplicados quando
+corro o script varias vezes."
+
+
+4. bcrypt.hash(password, 10) (API auth)
+---------------------------------------
+Codigo:
+    const hash = await bcrypt.hash(password, 10);
+
+O que dizes:
+"O bcrypt transforma a password numa sequencia ilegivel (hash).
+O 10 e o numero de rounds — quanto mais alto, mais seguro, mas
+mais lento. Guardo o hash na base de dados, nunca a password em
+texto limpo. Quando o utilizador faz login, comparo o hash da
+password introduzida com o hash guardado."
+
+
+5. Prepared Statement $1 (API seguranca)
+---------------------------------------
+Codigo:
+    pool.query('SELECT * FROM utilizadores WHERE email = $1', [email])
+
+O que dizes:
+"O $1 e um placeholder. O valor do email e enviado separadamente
+do comando SQL. A base de dados trata o valor como texto, nunca
+como codigo SQL. Por isso, mesmo que alguem envie ' OR 1=1 --,
+a base de dados ve isso como email literal, nao como instrucao SQL.
+E isto que impede SQL Injection."
+
+
+6. l.dadosaudit ? 'erro_codigo' vs (l.dadosaudit->>'erro_codigo') IS NOT NULL
+---------------------------------------------------------------------------
+Codigo:
+    -- ANTES (errado):
+    l.dadosaudit ? 'erro_codigo'
+
+    -- DEPOIS (corrigido):
+    (l.dadosaudit->>'erro_codigo') IS NOT NULL
+
+O que dizes:
+"O ? so verifica se a chave existe no JSON. Se o valor for null,
+a chave ainda existe, entao ? retorna verdadeiro e mostra o
+contador como anomalia quando nao e.
+O ->> tira o valor como texto. Se for null, o IS NOT NULL
+retorna falso. So mostra anomalia quando o erro_codigo tem
+realmente um valor."
+
+
+7. COMMIT / ROLLBACK (concorrencia)
+-----------------------------------
+Codigo:
+    BEGIN;
+    ...
+    COMMIT;   -- ou ROLLBACK;
+
+O que dizes:
+"BEGIN abre uma transacao. Tudo o que faco depois fica pendente.
+Se der tudo certo, COMMIT guarda tudo na base de dados de uma
+vez. Se algo falhar, ROLLBACK desfaz tudo, como se nada tivesse
+acontecido. E isto que garante ACID — ou faz tudo, ou nada."
