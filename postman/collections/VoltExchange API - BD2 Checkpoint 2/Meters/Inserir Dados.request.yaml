@@ -3,10 +3,8 @@ name: Inserir Dados
 url: "{{base_url}}/api/meters/readings"
 method: POST
 headers:
-  - key: Content-Type
-    value: application/json
+  Content-Type: application/json
 body:
   type: text
-  content: '{"contadorid":1,"datahora":"2026-05-13
-    12:00:00","kwh_leitura":5.5,"dadosaudit":{"temperatura":75}}'
+  content: '{"contadorid":9,"datahora":"2026-05-13 14:02:00","kwh_leitura":7.0,"dadosaudit":{"temperatura":90}}'
 order: 1000

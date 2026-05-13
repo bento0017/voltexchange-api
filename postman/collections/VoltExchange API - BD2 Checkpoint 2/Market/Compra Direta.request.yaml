@@ -1,8 +1,10 @@
 $kind: http-request
+name: Compra Direta
 url: "{{base_url}}/api/market/buy"
 method: POST
 headers:
-  Content-Type: application/json
+  - key: Content-Type
+    value: application/json
 body:
   type: text
   content: '{"ofertaid":2,"compradorid":2}'

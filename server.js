@@ -5,6 +5,7 @@ const authRoutes = require('./routes/auth');
 const metersRoutes = require('./routes/meters');
 const adminRoutes = require('./routes/admin');
 const marketRoutes = require('./routes/market');
+const usersRoutes = require('./routes/users');
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/meters', metersRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/market', marketRoutes);
+app.use('/api/users', usersRoutes);
 
 // Health check
 app.get('/', (req, res) => {
